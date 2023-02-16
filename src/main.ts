@@ -68,11 +68,11 @@ function createArrayInput(type: ArrayFormBuilder, value: Ref<unknown[]>) {
 	increment.textContent = "+";
 
 	if (!value.value) {
-		value.value = [""];
+		value.value = [];
 	}
 
 	increment.onclick = () => {
-		addArrayItem("", value.value.length);
+		addArrayItem(null, value.value.length);
 	};
 
 	container.appendChild(increment);
@@ -124,6 +124,24 @@ const { el } = createForm(
 				items: {
 					type: "text",
 					name: "xxx"
+				}
+			},
+			objItems: {
+				type: "array",
+				name: "items",
+				items: {
+					type: "object",
+					name: "xxx",
+					properties: {
+						nestedObj: {
+							type: "object",
+							name: "nestedObj",
+							properties: {
+								name: { type: "text", name: "name" },
+								password: { type: "text", name: "password" }
+							}
+						}
+					}
 				}
 			},
 			nestedObj: {
